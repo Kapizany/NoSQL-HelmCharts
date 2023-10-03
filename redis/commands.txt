@@ -1,0 +1,13 @@
+https://github.com/quickbooks2018/aws/blob/master/kubernetes-redis
+
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update
+helm dependency build
+helm upgrade --install redis-cluster -f ./values.yaml
+
+
+ou
+
+helm install redis-cluster oci://registry-1.docker.io/bitnamicharts/redis -f ./values.yaml
+kubectl exec -it redis-cluster-master-0 bash
+redis-cli -h redis-cluster-master -a password
